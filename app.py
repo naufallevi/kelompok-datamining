@@ -1,12 +1,12 @@
-import joblib
+import pickle
 import streamlit as st 
 from streamlit_option_menu import option_menu
 import pandas as pd 
 import numpy as np
 
 # Load Model
-estimasi_model = joblib.load(open('lr-estimasi_harga_rumah_jaksel.sav', 'rb'))
-hutang_model = joblib.load(open('dt-hutang-v1.sav', 'rb'))
+estimasi_model = pickle.load(open('lr-estimasi_harga_rumah_jaksel.sav', 'rb'))
+hutang_model = pickle.load(open('dt-hutang-v1.sav', 'rb'))
 
 #Navigasi Sidebar
 with st.sidebar:
