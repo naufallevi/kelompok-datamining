@@ -108,10 +108,10 @@ if(selected=="Prediksi Kredit"):
     col1, col2 =st.columns(2)
     
     with col1:
-        income_annum = st.number_input ("Nilai Pendapatan Tahunan", format="%.0f", value=0.0, step=1.0, help="Contoh: 50")
+        income_annum1 = st.number_input ("Nilai Pendapatan Tahunan", format="%.0f", value=0.0, step=1.0, help="Contoh: 50")
 
     with col2:
-        loan_amount = st.number_input ("Nilai Jumlah Pinjaman", format="%.0f", value=0.0, step=1.0)
+        loan_amount1 = st.number_input ("Nilai Jumlah Pinjaman", format="%.0f", value=0.0, step=1.0)
 
     with col1:
         loan_term = st.number_input ("Jangka Waktu Pinjaman (Tahun)", format="%.0f", value=0.0, step=1.0)
@@ -120,16 +120,26 @@ if(selected=="Prediksi Kredit"):
         cibil_score = st.number_input ("Score Kredit", format="%.0f", value=0.0, step=1.0)
 
     with col1:
-        residential_assets_value = st.number_input ("Nilai Aset Residensial", format="%.0f", value=0.0, step=1.0)
+        residential_assets_value1 = st.number_input ("Nilai Aset Residensial", format="%.0f", value=0.0, step=1.0)
 
     with col2:
-        commercial_assets_value = st.number_input ("Nilai Aset Komersial", format="%.0f", value=0.0, step=1.0)
+        commercial_assets_value1 = st.number_input ("Nilai Aset Komersial", format="%.0f", value=0.0, step=1.0)
 
     with col1:
-        luxury_assets_value = st.number_input ("Nilai Aset Mewah", format="%.0f", value=0.0, step=1.0)
+        luxury_assets_value1 = st.number_input ("Nilai Aset Mewah", format="%.0f", value=0.0, step=1.0)
 
     with col2:
-        bank_asset_value = st.number_input ("Nilai Aset Bank", format="%.0f", value=0.0, step=1.0)
+        bank_asset_value1 = st.number_input ("Nilai Aset Bank", format="%.0f", value=0.0, step=1.0)
+
+    # Convert Mata Uang
+    idr_to_rupee = 186.89
+
+    income_annum = income_annum1 / idr_to_rupee
+    loan_amount = loan_amount1 / idr_to_rupee
+    residential_assets_value = residential_assets_value1 / idr_to_rupee
+    commercial_assets_value = commercial_assets_value1 / idr_to_rupee
+    luxury_assets_value = luxury_assets_value1 / idr_to_rupee
+    bank_asset_value = bank_asset_value1 / idr_to_rupee
 
     # Kode Prediksi
 
@@ -148,9 +158,9 @@ if(selected=="Prediksi Kredit"):
         st.success(pred_hutang)  
         
     # Data Input
-    input = [no_of_dependents, edu, se, income_annum,loan_amount,loan_term,cibil_score,
-             residential_assets_value,commercial_assets_value,
-             luxury_assets_value,bank_asset_value,pred_hutang]
+    input = [no_of_dependents, edu, se, income_annum1 ,loan_amount1 ,loan_term, cibil_score,
+             residential_assets_value1, commercial_assets_value1,
+             luxury_assets_value1, bank_asset_value1, pred_hutang]
 
     # Output Dari Data Input
     st.write("")
